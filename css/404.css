@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+section{
+    text-align: center;
+    display: block;
+}
+img{
+    margin-top: 200px;
+    width: 20%;
+    height: 20%;
+}
+
+h2{
+    font-size: 70px;
+    padding-bottom: 15px;
+}
+p{
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+#copyRightMessage{
+    text-align: center;
+}
