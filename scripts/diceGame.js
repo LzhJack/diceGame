@@ -4,16 +4,10 @@ const startBtn = document.getElementById('start');
 const restartBtn = document.getElementById('restart');
 const diceImageFolder = "img/";
 let number;
-
 //Define A Dice Object
 class Dice {
     constructor(value) {
         this.value = value;
-    }
-
-    rollDice() {
-        number = Math.floor(Math.random() * 6 + 1);
-        return number;
     }
 
     describeSelf() {
@@ -33,11 +27,10 @@ class Player {
         this.roll.push(dice);
     }
 
-    sumToPlayer(roll){
+    sumToPlayer(roll) {
         let sum;
-        for(let i = 0;i<this.roll.length;i++)
-        {
-            sum+=roll[i];
+        for (let i = 0; i < this.roll.length; i++) {
+            sum += roll[i];
         }
         return sum;
     }
@@ -55,22 +48,46 @@ class Player {
     }
 }
 
+let playerTotalValue = [];
+let computerTotalValue = [];
+let counter = 0;
 //Trigger event to happens
 startBtn.addEventListener("click", () => {
-    let playerDice = [];
-    let computerDice = [];
-    for (let i = 0; i < 2; i++) {
-        let number = rollDice();
-        playerDice.push(number);
-        let number1 = rollDice();
-        computerDice.push(number1);
+    if(counter < 3)
+    {
+        let playerDice = [];
+        let computerDice = [];
+        for (let i = 0; i < 2; i++) {
+            let number = rollDice();
+            let number2 = rollDice();
+            let dice = new Dice(number);
+            playerDice.push(dice.value);
+            let dice2 = new Dice(number2);
+            computerDice.push(dice2.value);
+        }
+        console.log(playerDice); //player current dice;
+        console.log(computerDice); // computer current dice;
+        playerValue = checkDiceValue(playerDice);  //checking player current value;
+        computerValue = checkDiceValue(computerDice); //checking computer current value;
+        playerTotalValue.push(playerValue); //adding current value to player total value;
+        computerTotalValue.push(computerValue); //adding current value to computer total value;
+        console.log(playerValue); //display current player value;
+        console.log(computerValue); // display current player value;
+        playerTotal = checkTotalValue(playerTotalValue);
+        console.log(playerTotal); //display current total player value;
+        computerTotal = checkTotalValue(computerTotalValue);
+        console.log(computerTotalValue); //display current total computer value;
+        counter++;
     }
-    console.log(playerDice);
-    console.log(computerDice);
-    playerValue = checkDiceValue(playerDice);
-    computerValue = checkDiceValue(computerDice);
-    console.log(playerValue);
-    console.log(computerValue);
+    else{
+        if(playerTotalValue > computerTotalValue)
+        {
+            console.log("Player Won");
+        }
+        else{
+            console.log("Computer Won");
+        }
+    }
 });
 
 //Roll the dices
@@ -91,4 +108,12 @@ function checkDiceValue(diceList) {
         diceValue = diceList.reduce((a, b) => a + b, 0)
     }
     return diceValue;
+}
+
+function checkTotalValue(arraylist) {
+    let sum = 0;
+    for (let i = 0; i < arraylist.length; i++) {
+        sum += arraylist[i];
+    }
+    return sum;
 }
