@@ -4,6 +4,7 @@ const startBtn = document.getElementById('start');
 const restartBtn = document.getElementById('restart');
 const diceImageFolder = "img/";
 let number;
+
 //Define A Dice Object
 class Dice {
     constructor(value) {
@@ -19,7 +20,7 @@ class Dice {
         let img = `<img id="${this.value}" src="${diceImageFolder}dice-six-faces-${this.value}.png" alt="${this.value}" width="100px" height="100px"</img>`;
         return img;
     }
-    
+
 }
 
 class Player {
@@ -52,10 +53,6 @@ class Player {
         html += "</ul>";
         return html;
     }
-}
-
-class Game{
-    
 }
 
 //Trigger event to happens
