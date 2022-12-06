@@ -1,5 +1,7 @@
 const player = document.getElementById('playerSection');
+const playerSection = document.getElementById('pDiceSection');
 const computer = document.getElementById('computerSection');
+const computerSection = document.getElementById('cDiceSection');
 const startBtn = document.getElementById('start');
 const restartBtn = document.getElementById('restart');
 const diceImageFolder = "img/";
@@ -65,13 +67,18 @@ startBtn.addEventListener("click", () => {
             computerDice.push(dice2.value);
         }
         console.log(playerDice); //player current dice;
+        playerSection.innerHTML += `${playerDice}`;
+        playerSection.innerHTML += `<img id="${playerDice}" src="${diceImageFolder}dice-six-faces-${playerDice}.png" alt="${playerDice}" width="100px" height="100px"</img>`;
         console.log(computerDice); // computer current dice;
+        computerSection.innerHTML += `${computerDice}`;
         playerValue = checkDiceValue(playerDice);  //checking player current value;
         computerValue = checkDiceValue(computerDice); //checking computer current value;
         playerTotalValue.push(playerValue); //adding current value to player total value;
         computerTotalValue.push(computerValue); //adding current value to computer total value;
         console.log(playerValue); //display current player value;
+        playerSection.innerHTML +=`${playerValue}`; 
         console.log(computerValue); // display current player value;
+        computerSection.innerHTML +=`${computerValue}`;
         playerTotal = checkTotalValue(playerTotalValue);
         console.log(playerTotal); //display current total player value;
         computerTotal = checkTotalValue(computerTotalValue);
