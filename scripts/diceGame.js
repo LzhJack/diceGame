@@ -53,8 +53,7 @@ let computerTotalValue = [];
 let counter = 0;
 //Trigger event to happens
 startBtn.addEventListener("click", () => {
-    if(counter < 3)
-    {
+    if (counter < 3) {
         let playerDice = [];
         let computerDice = [];
         for (let i = 0; i < 2; i++) {
@@ -76,18 +75,21 @@ startBtn.addEventListener("click", () => {
         playerTotal = checkTotalValue(playerTotalValue);
         console.log(playerTotal); //display current total player value;
         computerTotal = checkTotalValue(computerTotalValue);
-        console.log(computerTotalValue); //display current total computer value;
+        console.log(computerTotal); //display current total computer value;
         counter++;
     }
-    else{
-        if(playerTotalValue > computerTotalValue)
-        {
+    else {
+        if (playerTotalValue > computerTotalValue) {
             console.log("Player Won");
         }
-        else{
+        else {
             console.log("Computer Won");
         }
     }
+});
+
+restartBtn.addEventListener("click", () => {
+    window.location.reload();
 });
 
 //Roll the dices
