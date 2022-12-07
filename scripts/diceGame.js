@@ -18,7 +18,7 @@ class Dice {
     }
 
     describeSelf() {
-        let img = `<img id="${this.value}" src="${diceImageFolder}dice-${this.value}.png" alt="${this.value}" width="100px" height="100px"</img>`;
+        let img = `<img id="${this.value}" src="${diceImageFolder}dice-six-faces-${this.value}.png" alt="${this.value}" width="100px" height="100px"</img>`;
         return img;
     }
 
@@ -71,9 +71,6 @@ startBtn.addEventListener("click", () => {
             let dice2 = new Dice(number2);
             computerDice.push(dice2.value);
         }
-        currentDice = playerDice[0];
-        currentDice2 = playerDice[1];
-        console.log(currentDice);
         playerValue = checkDiceValue(playerDice);  //checking player current value;
         computerValue = checkDiceValue(computerDice); //checking computer current value;
         playerTotalValue.push(playerValue); //adding current value to player total value;
@@ -132,3 +129,17 @@ function checkTotalValue(arraylist) {
     }
     return sum;
 }
+
+const $tabs = $('.tab');
+const $content = $('.content');
+
+// Hide the content elements on page load
+$content.hide();
+
+// Accordion
+$tabs.click(function(){
+    //if they click on a tab,
+    //determine which one with $(this)
+    //and slideToggle() the element that comes after this tab
+    $(this).next().slideToggle();                 
+});
