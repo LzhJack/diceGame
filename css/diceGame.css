@@ -1,0 +1,55 @@
+:root {
+    --main-color: #0b2139;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #000000;
+    background: white;
+    width: auto;
+}
+
+main {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 90px;
+}
+
+header {
+    background: var(--main-color);
+    color: white;
+    height: 70px;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    text-align: center;
+    padding-top: 5px;
+}
+
+section{
+    padding:10px;
+}
+
+img{
+    margin-right: 10px;
+}
+
+#copyRightSignature {
+    color: #ffffff;
+    padding: 15px;
+    text-align: right;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--main-color);
+    font-size: 20px;
+}
