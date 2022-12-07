@@ -1,7 +1,12 @@
 const player = document.getElementById('playerSection');
 const playerSection = document.getElementById('pDiceSection');
+const playerScore = document.getElementById('playerCurrentScore');
+const playerTotalScore = document.getElementById('playerTotalScore');
 const computer = document.getElementById('computerSection');
 const computerSection = document.getElementById('cDiceSection');
+const computerScore = document.getElementById('computerCurrentScore');
+const computerTotalScore = document.getElementById('computerTotalScore');
+const result = document.getElementById('resultMessage');
 const startBtn = document.getElementById('start');
 const restartBtn = document.getElementById('restart');
 const diceImageFolder = "img/";
@@ -66,31 +71,28 @@ startBtn.addEventListener("click", () => {
             let dice2 = new Dice(number2);
             computerDice.push(dice2.value);
         }
-        console.log(playerDice); //player current dice;
-        playerSection.innerHTML += `${playerDice}`;
-        playerSection.innerHTML += `<img id="${playerDice}" src="${diceImageFolder}dice-six-faces-${playerDice}.png" alt="${playerDice}" width="100px" height="100px"</img>`;
-        console.log(computerDice); // computer current dice;
-        computerSection.innerHTML += `${computerDice}`;
         playerValue = checkDiceValue(playerDice);  //checking player current value;
         computerValue = checkDiceValue(computerDice); //checking computer current value;
         playerTotalValue.push(playerValue); //adding current value to player total value;
         computerTotalValue.push(computerValue); //adding current value to computer total value;
-        console.log(playerValue); //display current player value;
-        playerSection.innerHTML +=`${playerValue}`; 
-        console.log(computerValue); // display current player value;
-        computerSection.innerHTML +=`${computerValue}`;
         playerTotal = checkTotalValue(playerTotalValue);
-        console.log(playerTotal); //display current total player value;
         computerTotal = checkTotalValue(computerTotalValue);
-        console.log(computerTotal); //display current total computer value;
+        playerSection.innerHTML += `<img id="${playerDice[0]}" src="${diceImageFolder}dice-six-faces-${playerDice[0]}.png" alt="${playerDice[0]}" width="100px" height="100px"</img>`;
+        playerSection.innerHTML += `<img id="${playerDice[1]}" src="${diceImageFolder}dice-six-faces-${playerDice[1]}.png" alt="${playerDice[1]}" width="100px" height="100px"</img>`;
+        computerSection.innerHTML += `<img id="${computerDice[0]}" src="${diceImageFolder}dice-six-faces-${computerDice[0]}.png" alt="${computerDice[0]}" width="100px" height="100px"</img>`;
+        computerSection.innerHTML += `<img id="${computerDice[1]}" src="${diceImageFolder}dice-six-faces-${computerDice[1]}.png" alt="${computerDice[1]}" width="100px" height="100px"</img>`;
+        playerScore.innerHTML =`Player's current score: ${playerValue}`; 
+        playerTotalScore.innerHTML =`Player's total score: ${playerTotal}`;
+        computerScore.innerHTML =`Computer's current score: ${computerValue}`;
+        computerTotalScore.innerHTML =`Computer's total score: ${computerTotal}`;
         counter++;
     }
-    else {
+    else{
         if (playerTotalValue > computerTotalValue) {
-            console.log("Player Won");
+            result.innerHTML+=`Player Won`;
         }
         else {
-            console.log("Computer Won");
+            result.innerHTML+=`Computer Won`;
         }
     }
 });
