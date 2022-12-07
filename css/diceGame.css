@@ -11,14 +11,24 @@ body {
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
     line-height: 1.5;
-    color: #000000;
-    background: white;
+    color: #ffffff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../img/background-1.jpg");
     width: auto;
+    max-height: max-content;
 }
 
 main {
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 1100px;
+    max-height: 1100px;
+    margin: 0 auto;
+    padding: 0 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows:1fr 1fr 1fr;
+    grid-gap: 40px 40px;
     margin-bottom: 90px;
 }
 
@@ -34,6 +44,16 @@ header {
     padding-top: 5px;
 }
 
+#playerName,
+#enemyName,
+#playerCurrentScore,
+#playerTotalScore,
+#computerCurrentScore,
+#computerTotalScore
+{
+    font-size: 30px;
+}
+
 section{
     padding:10px;
 }
@@ -45,6 +65,54 @@ img{
 ul{
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+button {
+    background-color: #008CBA;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#playerSection{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row: 2;
+    text-align: center;
+}
+
+#computerSection{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row: 2;
+    text-align: center;
+}
+
+#buttonSection{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 3;
+    text-align: center;
+    margin-top:200px;
+}
+
+#accordionSection{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 4;
+}
+
+#resultMessage{
+    font-size: 50px;
+    text-align: center;
+    padding-top: 30px;
 }
 
 #copyRightSignature {
