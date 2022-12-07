@@ -37,6 +37,7 @@ class Dice {
 
 }
 
+//Define A Player Object
 class Player {
     constructor(name) {
         this.name = name;
@@ -91,18 +92,18 @@ startBtn.addEventListener("click", () => {
         playerDice2.src = `${diceImageFolder}dice-${playerDice[1]}.png`;
         computerDice3.src = `${diceImageFolder}dice-${computerDice[0]}.png`;
         computerDice2.src = `${diceImageFolder}dice-${computerDice[1]}.png`;
-        playerScore.innerHTML =`Player's current score: ${playerValue}`; 
-        playerTotalScore.innerHTML =`Player's total score: ${playerTotal}`;
-        computerScore.innerHTML =`Computer's current score: ${computerValue}`;
-        computerTotalScore.innerHTML =`Computer's total score: ${computerTotal}`;
+        playerScore.innerHTML = `Player's current score: ${playerValue}`;
+        playerTotalScore.innerHTML = `Player's total score: ${playerTotal}`;
+        computerScore.innerHTML = `Computer's current score: ${computerValue}`;
+        computerTotalScore.innerHTML = `Computer's total score: ${computerTotal}`;
         counter++;
     }
-    else{
+    else {
         if (playerTotalValue > computerTotalValue) {
-            result.innerHTML+=`Player Won`;
+            result.innerHTML += `Player Won`;
         }
         else {
-            result.innerHTML+=`Computer Won`;
+            result.innerHTML += `Computer Won`;
         }
     }
 });
@@ -144,6 +145,6 @@ function checkTotalValue(arraylist) {
 $content.hide();
 
 // Accordion
-$tabs.click(function(){
-    $(this).next().slideToggle();                 
+$tabs.click(function () {
+    $(this).next().slideToggle();
 });
