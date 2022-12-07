@@ -140,11 +140,6 @@ function checkTotalValue(arraylist) {
     return sum;
 }
 
-function changeImageSrc(number)
-{
-
-}
-
 //Jquery components
 $content.hide();
 
