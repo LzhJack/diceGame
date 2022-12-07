@@ -10,7 +10,7 @@ const result = document.getElementById('resultMessage');
 const startBtn = document.getElementById('start');
 const restartBtn = document.getElementById('restart');
 const diceImageFolder = "img/";
-let number;
+
 //Define A Dice Object
 class Dice {
     constructor(value) {
@@ -18,7 +18,7 @@ class Dice {
     }
 
     describeSelf() {
-        let img = `<img id="${this.value}" src="${diceImageFolder}dice-six-faces-${this.value}.png" alt="${this.value}" width="100px" height="100px"</img>`;
+        let img = `<img id="${this.value}" src="${diceImageFolder}dice-${this.value}.png" alt="${this.value}" width="100px" height="100px"</img>`;
         return img;
     }
 
@@ -71,16 +71,19 @@ startBtn.addEventListener("click", () => {
             let dice2 = new Dice(number2);
             computerDice.push(dice2.value);
         }
+        currentDice = playerDice[0];
+        currentDice2 = playerDice[1];
+        console.log(currentDice);
         playerValue = checkDiceValue(playerDice);  //checking player current value;
         computerValue = checkDiceValue(computerDice); //checking computer current value;
         playerTotalValue.push(playerValue); //adding current value to player total value;
         computerTotalValue.push(computerValue); //adding current value to computer total value;
         playerTotal = checkTotalValue(playerTotalValue);
         computerTotal = checkTotalValue(computerTotalValue);
-        playerSection.innerHTML += `<img id="${playerDice[0]}" src="${diceImageFolder}dice-six-faces-${playerDice[0]}.png" alt="${playerDice[0]}" width="100px" height="100px"</img>`;
-        playerSection.innerHTML += `<img id="${playerDice[1]}" src="${diceImageFolder}dice-six-faces-${playerDice[1]}.png" alt="${playerDice[1]}" width="100px" height="100px"</img>`;
-        computerSection.innerHTML += `<img id="${computerDice[0]}" src="${diceImageFolder}dice-six-faces-${computerDice[0]}.png" alt="${computerDice[0]}" width="100px" height="100px"</img>`;
-        computerSection.innerHTML += `<img id="${computerDice[1]}" src="${diceImageFolder}dice-six-faces-${computerDice[1]}.png" alt="${computerDice[1]}" width="100px" height="100px"</img>`;
+        playerSection.innerHTML += `<img id="${playerDice[0]}" src="${diceImageFolder}dice-${playerDice[0]}.png" alt="${playerDice[0]}" width="100px" height="100px"</img>`;
+        playerSection.innerHTML += `<img id="${playerDice[1]}" src="${diceImageFolder}dice-${playerDice[1]}.png" alt="${playerDice[1]}" width="100px" height="100px"</img>`;
+        computerSection.innerHTML += `<img id="${computerDice[0]}" src="${diceImageFolder}dice-${computerDice[0]}.png" alt="${computerDice[0]}" width="100px" height="100px"</img>`;
+        computerSection.innerHTML += `<img id="${computerDice[1]}" src="${diceImageFolder}dice-${computerDice[1]}.png" alt="${computerDice[1]}" width="100px" height="100px"</img>`;
         playerScore.innerHTML =`Player's current score: ${playerValue}`; 
         playerTotalScore.innerHTML =`Player's total score: ${playerTotal}`;
         computerScore.innerHTML =`Computer's current score: ${computerValue}`;
@@ -121,6 +124,7 @@ function checkDiceValue(diceList) {
     return diceValue;
 }
 
+//Check total value 
 function checkTotalValue(arraylist) {
     let sum = 0;
     for (let i = 0; i < arraylist.length; i++) {
