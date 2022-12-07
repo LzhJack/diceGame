@@ -1,20 +1,33 @@
 const player = document.getElementById('playerSection');
-const playerSection = document.getElementById('pDiceSection');
+const playerDice3 = document.getElementById('playerDice');
+const playerDice2 = document.getElementById('playerDice2');
 const playerScore = document.getElementById('playerCurrentScore');
 const playerTotalScore = document.getElementById('playerTotalScore');
 const computer = document.getElementById('computerSection');
-const computerSection = document.getElementById('cDiceSection');
+const computerDice3 = document.getElementById('computerDice');
+const computerDice2 = document.getElementById('computerDice2');
 const computerScore = document.getElementById('computerCurrentScore');
 const computerTotalScore = document.getElementById('computerTotalScore');
 const result = document.getElementById('resultMessage');
 const startBtn = document.getElementById('start');
 const restartBtn = document.getElementById('restart');
 const diceImageFolder = "img/";
+const $tabs = $('.tab');
+const $content = $('.content');
+
+let playerTotalValue = [];
+let computerTotalValue = [];
+let counter = 0;
 
 //Define A Dice Object
 class Dice {
     constructor(value) {
         this.value = value;
+    }
+
+    rollDice() {
+        number = Math.floor(Math.random() * 6 + 1);
+        return number;
     }
 
     describeSelf() {
@@ -55,9 +68,6 @@ class Player {
     }
 }
 
-let playerTotalValue = [];
-let computerTotalValue = [];
-let counter = 0;
 //Trigger event to happens
 startBtn.addEventListener("click", () => {
     if (counter < 3) {
@@ -77,10 +87,10 @@ startBtn.addEventListener("click", () => {
         computerTotalValue.push(computerValue); //adding current value to computer total value;
         playerTotal = checkTotalValue(playerTotalValue);
         computerTotal = checkTotalValue(computerTotalValue);
-        playerSection.innerHTML += `<img id="${playerDice[0]}" src="${diceImageFolder}dice-${playerDice[0]}.png" alt="${playerDice[0]}" width="100px" height="100px"</img>`;
-        playerSection.innerHTML += `<img id="${playerDice[1]}" src="${diceImageFolder}dice-${playerDice[1]}.png" alt="${playerDice[1]}" width="100px" height="100px"</img>`;
-        computerSection.innerHTML += `<img id="${computerDice[0]}" src="${diceImageFolder}dice-${computerDice[0]}.png" alt="${computerDice[0]}" width="100px" height="100px"</img>`;
-        computerSection.innerHTML += `<img id="${computerDice[1]}" src="${diceImageFolder}dice-${computerDice[1]}.png" alt="${computerDice[1]}" width="100px" height="100px"</img>`;
+        playerDice3.src = `${diceImageFolder}dice-${playerDice[0]}.png`;
+        playerDice2.src = `${diceImageFolder}dice-${playerDice[1]}.png`;
+        computerDice3.src = `${diceImageFolder}dice-${computerDice[0]}.png`;
+        computerDice2.src = `${diceImageFolder}dice-${computerDice[1]}.png`;
         playerScore.innerHTML =`Player's current score: ${playerValue}`; 
         playerTotalScore.innerHTML =`Player's total score: ${playerTotal}`;
         computerScore.innerHTML =`Computer's current score: ${computerValue}`;
@@ -130,16 +140,15 @@ function checkTotalValue(arraylist) {
     return sum;
 }
 
-const $tabs = $('.tab');
-const $content = $('.content');
+function changeImageSrc(number)
+{
 
-// Hide the content elements on page load
+}
+
+//Jquery components
 $content.hide();
 
 // Accordion
 $tabs.click(function(){
-    //if they click on a tab,
-    //determine which one with $(this)
-    //and slideToggle() the element that comes after this tab
     $(this).next().slideToggle();                 
 });
